@@ -1,0 +1,93 @@
+@page "/products"
+@using ShoppingCartApp.Client.Services
+@inject ProductService ProductService
+@using ShoppingCartApp.Shared
+@using System.Linq
+@inject ShoppingCartService ShoppingCartService
+@using ShoppingCartApp.Client.Pages
+
+<head>
+    <link href="styles/checkout.css" rel="stylesheet" />
+</head>
+
+<div class="row">
+    <div class="col">
+        <h3>Products</h3>
+        <div class="row flex-column">
+            @if (products == null)
+            {
+                <p>Loading products...</p>
+            }
+            else
+            {
+                @foreach (var product in products)
+                {
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">@product.Title</h5>
+                                <p class="card-text">SKU: @product.Sku</p>
+                                <p class="card-text">Price: @product.Price</p>
+                                <button class="btn btn-primary" @onclick="() => AddToCart(product)">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+
+    </div>
+    <div class="col">
+    <div > 
+        <CheckOutForm />
+        <h3>Shopping Cart</h3>
+        @if (ShoppingCartService.IsCartEmpty())
+        {
+            <p>Your cart is empty.</p>
+        }
+        else
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>SKU</th>
+                        <th>Title</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ShoppingCartService.GetCartItems())
+                    {
+                        <tr>
+                            <td>@item.Product.Sku</td>
+                            <td>@item.Product.Title</td>
+                            <td>@item.Product.Price</td>
+                            <td>@item.Quantity</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="row">
+            <div class="col">Total: @ShoppingCartService.GetTotalPrice()</div>
+            </div>
+        }
+        </div>
+    </div>
+</div>
+@code {
+    private List<Product>? products;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var products = await ProductService.GetProductsAsync();
+        if (products != null)
+        {
+            this.products = products.ToList();
+        }
+    }
+
+    private void AddToCart(Product product)
+    {
+        ShoppingCartService.AddItemToCart(product, 1);
+    }
+}

@@ -1,0 +1,12 @@
+/Users/roselie/Documents/ShoppingCartApp/Shared/bin/Debug/net7.0/ShoppingCartApp.Shared.deps.json
+/Users/roselie/Documents/ShoppingCartApp/Shared/bin/Debug/net7.0/ShoppingCartApp.Shared.dll
+/Users/roselie/Documents/ShoppingCartApp/Shared/bin/Debug/net7.0/ShoppingCartApp.Shared.pdb
+/Users/roselie/Documents/ShoppingCartApp/Shared/obj/Debug/net7.0/ShoppingCartApp.Shared.csproj.AssemblyReference.cache
+/Users/roselie/Documents/ShoppingCartApp/Shared/obj/Debug/net7.0/ShoppingCartApp.Shared.GeneratedMSBuildEditorConfig.editorconfig
+/Users/roselie/Documents/ShoppingCartApp/Shared/obj/Debug/net7.0/ShoppingCartApp.Shared.AssemblyInfoInputs.cache
+/Users/roselie/Documents/ShoppingCartApp/Shared/obj/Debug/net7.0/ShoppingCartApp.Shared.AssemblyInfo.cs
+/Users/roselie/Documents/ShoppingCartApp/Shared/obj/Debug/net7.0/ShoppingCartApp.Shared.csproj.CoreCompileInputs.cache
+/Users/roselie/Documents/ShoppingCartApp/Shared/obj/Debug/net7.0/ShoppingCartApp.Shared.dll
+/Users/roselie/Documents/ShoppingCartApp/Shared/obj/Debug/net7.0/refint/ShoppingCartApp.Shared.dll
+/Users/roselie/Documents/ShoppingCartApp/Shared/obj/Debug/net7.0/ShoppingCartApp.Shared.pdb
+/Users/roselie/Documents/ShoppingCartApp/Shared/obj/Debug/net7.0/ref/ShoppingCartApp.Shared.dll

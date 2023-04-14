@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "kam5ci5sLlx8ap7DAwAtS2Ax29+zPIrVnYjJCfe4ENdoGUoF5fnemZYOV0PZuF86twCPAtglKNGJTWRDXIgQdQ==",
+  "success": true,
+  "projectFilePath": "/Users/roselie/Documents/ShoppingCartApp/Shared/ShoppingCartApp.Shared.csproj",
+  "expectedPackageFiles": [
+    "/Users/roselie/.nuget/packages/bootstrap/5.2.3/bootstrap.5.2.3.nupkg.sha512",
+    "/Users/roselie/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

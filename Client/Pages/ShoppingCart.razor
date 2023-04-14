@@ -1,0 +1,50 @@
+@page "/cart"
+@using ShoppingCartApp.Shared
+@using ShoppingCartApp.Client.Services
+@inject ShoppingCartService shoppingCartService
+
+<h3>Shopping Cart</h3>
+
+@if (shoppingCartService.IsCartEmpty())
+{
+    <p>Your cart is empty.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>SKU</th>
+                <th>Title</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in shoppingCartService.GetCartItems())
+            {
+                <tr>
+                    <td>@item.Product.Sku</td>
+                    <td>@item.Product.Title</td>
+                    <td>@item.Product.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    protected override void OnInitialized()
+    {
+        shoppingCartService.OnCartUpdated += Refresh;
+    }
+
+    private void Refresh()
+    {
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        shoppingCartService.OnCartUpdated -= Refresh;
+    }
+}

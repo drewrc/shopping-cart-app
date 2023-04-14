@@ -1,0 +1,42 @@
+[  
+    {
+      "Sku": "AA11",
+      "Title": "Say and Do S Action Artic Cards",
+      "Price": 12.95
+    },
+    {
+      "Sku": "BGO120",
+      "Title": "Ask & Answer 'Wh' Bingo",
+      "Price": 59.95
+    },
+    {
+      "Sku": "JP350",
+      "Title": "Jeepers Peepers",
+      "Price": 39.95
+    },
+    {
+      "Sku": "BK318",
+      "Title": "Word FLiPS",
+      "Price": 44.95
+    },
+    {
+      "Sku": "BKR233",
+      "Title": "Webber's Jumbo Articulation Drill Book",
+      "Price": 94.95
+    },
+    {
+      "Sku": "OTSC8765",
+      "Title": "Yogarilla",
+      "Price": 38.21
+    },
+    {
+      "Sku": "CC77",
+      "Title": "Phonological Awareness Chipper Chat",
+      "Price": 69.95
+    },
+    {
+      "Sku": "CRD78",
+      "Title": "Sequencing Verb Tenses",
+      "Price": 34.95
+    }
+  ]

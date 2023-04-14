@@ -1,0 +1,76 @@
+@page "/checkout"
+@using System.Net.Http
+@inject HttpClient HttpClient
+@using System.Net.Http.Headers;
+@using System.Text;
+@using Newtonsoft.Json;
+@inject NavigationManager NavigationManager
+@inject ShoppingCartService ShoppingCartService
+@inject OrderService OrderService
+@using ShoppingCartApp.Shared
+@using ShoppingCartApp.Client.Services
+
+
+
+<h3>Checkout Form</h3>
+<form @onsubmit="SubmitForm">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter your name" @bind="Name">
+    </div>
+    <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" @bind="Email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone number</label>
+        <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" @bind="Phone">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Order</button>
+</form>
+
+@code {
+    private string Name { get; set; }
+    private string Email { get; set; }
+    private string Phone { get; set; }
+
+    private async Task SubmitForm()
+{
+    var order = new Order
+    {
+        Id = Guid.NewGuid().GetHashCode(),
+        OrderDate = DateTime.UtcNow,
+        Name = Name,
+        Email = Email,
+        Phone = Phone,
+        TotalPrice = ShoppingCartService.GetTotalPrice(),
+        Items = ShoppingCartService.GetCartItems().Select(item => new OrderItem
+        {
+            Sku = item.Product.Sku,
+            Title = item.Product.Title,
+            Price = item.Product.Price,
+            Quantity = item.Quantity
+        }).ToList()
+    };
+
+    // Send the order data to the web API endpoint
+    var json = JsonConvert.SerializeObject(order);
+    var content = new StringContent(json, Encoding.UTF8, "application/json");
+    var response = await HttpClient.PostAsync("/api/orders", content);
+
+    // Check the response status code and handle any errors
+    if (response.IsSuccessStatusCode)
+    {
+        NavigationManager.NavigateTo("/thankyou", forceLoad: true);
+    }
+    else
+    {
+        // Display an error message
+        var errorMessage = await response.Content.ReadAsStringAsync();
+        Console.WriteLine(errorMessage);
+    }
+}
+
+
+}
