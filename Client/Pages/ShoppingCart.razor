@@ -35,16 +35,16 @@ else
 @code {
     protected override void OnInitialized()
     {
-        shoppingCartService.OnCartUpdated += Refresh;
+        shoppingCartService.OnCartUpdated += Refresh;  // Subscribe to the OnCartUpdated event when the component is initialized
     }
 
     private void Refresh()
     {
-        StateHasChanged();
+        StateHasChanged();  // Refresh the component's UI when the shopping cart is updated
     }
 
     public void Dispose()
     {
-        shoppingCartService.OnCartUpdated -= Refresh;
+        shoppingCartService.OnCartUpdated -= Refresh; // Unsubscribe from the OnCartUpdated event when the component is disposed of
     }
 }

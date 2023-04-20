@@ -1,5 +1,5 @@
-@page "/products"
-@using ShoppingCartApp.Client.Services
+@page "/products"        // Sets the page route to /products
+@using ShoppingCartApp.Client.Services     // Import the necessary namespaces
 @inject ProductService ProductService
 @using ShoppingCartApp.Shared
 @using System.Linq
@@ -7,25 +7,25 @@
 @using ShoppingCartApp.Client.Pages
 
 <head>
-    <link href="styles/checkout.css" rel="stylesheet" />
+    <link href="styles/checkout.css" rel="stylesheet" />    
 </head>
 
 <div class="row">
     <div class="col">
         <h3>Products</h3>
         <div class="row flex-column">
-            @if (products == null)
+            @if (products == null)      // Check if the product data has been retrieved
             {
-                <p>Loading products...</p>
+                <p>Loading products...</p>   // Display a message if the data is not available
             }
             else
             {
-                @foreach (var product in products)
+                @foreach (var product in products)     // Display the product data using a foreach loop
                 {
                     <div class="col">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">@product.Title</h5>
+                                <h5 class="card-title">@product.Title</h5>  
                                 <p class="card-text">SKU: @product.Sku</p>
                                 <p class="card-text">Price: @product.Price</p>
                                 <button class="btn btn-primary" @onclick="() => AddToCart(product)">Add to Cart</button>
@@ -39,15 +39,15 @@
     </div>
     <div class="col">
     <div > 
-        <CheckOutForm />
+        <CheckOutForm />   
         <h3>Shopping Cart</h3>
-        @if (ShoppingCartService.IsCartEmpty())
+        @if (ShoppingCartService.IsCartEmpty())     // Check if the cart is empty
         {
-            <p>Your cart is empty.</p>
+            <p>Your cart is empty.</p>   // Display a message if the cart is empty
         }
         else
         {
-            <table class="table">
+            <table class="table">   
                 <thead>
                     <tr>
                         <th>SKU</th>
@@ -56,7 +56,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in ShoppingCartService.GetCartItems())
+                    @foreach (var item in ShoppingCartService.GetCartItems())    // Use a foreach loop to display each cart item
                     {
                         <tr>
                             <td>@item.Product.Sku</td>
@@ -68,26 +68,26 @@
                 </tbody>
             </table>
             <div class="row">
-            <div class="col">Total: @ShoppingCartService.GetTotalPrice()</div>
+            <div class="col">Total: @ShoppingCartService.GetTotalPrice()</div> 
             </div>
         }
         </div>
     </div>
 </div>
 @code {
-    private List<Product>? products;
+    private List<Product>? products;   // Declare a private field for storing the product data
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()     // Retrieve the product data when the page is initialized
     {
-        var products = await ProductService.GetProductsAsync();
+        var products = await ProductService.GetProductsAsync();   // Call the ProductService to get the product data
         if (products != null)
         {
-            this.products = products.ToList();
+            this.products = products.ToList();    // Store the product data in the private field
         }
     }
 
-    private void AddToCart(Product product)
+    private void AddToCart(Product product)    // Add a product to the shopping cart when the "Add to Cart" button is clicked
     {
-        ShoppingCartService.AddItemToCart(product, 1);
+        ShoppingCartService.AddItemToCart(product, 1);   // Call the ShoppingCart
     }
 }
