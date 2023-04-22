@@ -1,31 +1,29 @@
-@page "/products"        // Sets the page route to /products
-@using ShoppingCartApp.Client.Services     // Import the necessary namespaces
+@page "/products"
+@using ShoppingCartApp.Client.Services
 @inject ProductService ProductService
 @using ShoppingCartApp.Shared
 @using System.Linq
 @inject ShoppingCartService ShoppingCartService
 @using ShoppingCartApp.Client.Pages
 
-<head>
-    <link href="styles/checkout.css" rel="stylesheet" />    
-</head>
+
 
 <div class="row">
     <div class="col">
         <h3>Products</h3>
         <div class="row flex-column">
-            @if (products == null)      // Check if the product data has been retrieved
+            @if (products == null)
             {
-                <p>Loading products...</p>   // Display a message if the data is not available
+                <p>Loading products...</p>
             }
             else
             {
-                @foreach (var product in products)     // Display the product data using a foreach loop
+                @foreach (var product in products)
                 {
                     <div class="col">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">@product.Title</h5>  
+                                <h5 class="card-title">@product.Title</h5>
                                 <p class="card-text">SKU: @product.Sku</p>
                                 <p class="card-text">Price: @product.Price</p>
                                 <button class="btn btn-primary" @onclick="() => AddToCart(product)">Add to Cart</button>
@@ -39,15 +37,15 @@
     </div>
     <div class="col">
     <div > 
-        <CheckOutForm />   
+        <CheckOutForm />
         <h3>Shopping Cart</h3>
-        @if (ShoppingCartService.IsCartEmpty())     // Check if the cart is empty
+        @if (ShoppingCartService.IsCartEmpty())
         {
-            <p>Your cart is empty.</p>   // Display a message if the cart is empty
+            <p>Your cart is empty.</p>
         }
         else
         {
-            <table class="table">   
+            <table class="table">
                 <thead>
                     <tr>
                         <th>SKU</th>
@@ -56,7 +54,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in ShoppingCartService.GetCartItems())    // Use a foreach loop to display each cart item
+                    @foreach (var item in ShoppingCartService.GetCartItems())
                     {
                         <tr>
                             <td>@item.Product.Sku</td>
@@ -68,26 +66,26 @@
                 </tbody>
             </table>
             <div class="row">
-            <div class="col">Total: @ShoppingCartService.GetTotalPrice()</div> 
+            <div class="col">Total: @ShoppingCartService.GetTotalPrice()</div>
             </div>
         }
         </div>
     </div>
 </div>
 @code {
-    private List<Product>? products;   // Declare a private field for storing the product data
+    private List<Product>? products; // declare a private nullable list of Product objects called "products"
 
-    protected override async Task OnInitializedAsync()     // Retrieve the product data when the page is initialized
+    protected override async Task OnInitializedAsync() // define a protected override method called "OnInitializedAsync"
     {
-        var products = await ProductService.GetProductsAsync();   // Call the ProductService to get the product data
-        if (products != null)
+        var products = await ProductService.GetProductsAsync(); // call a method named "GetProductsAsync" from a service named "ProductService" to retrieve a list of Product objects
+        if (products != null) // if the list of products is not null
         {
-            this.products = products.ToList();    // Store the product data in the private field
+            this.products = products.ToList(); // assign the list of products to the "products" field of the component as a new list
         }
     }
 
-    private void AddToCart(Product product)    // Add a product to the shopping cart when the "Add to Cart" button is clicked
+    private void AddToCart(Product product) // define a private method called "AddToCart" that takes a Product object as an argument
     {
-        ShoppingCartService.AddItemToCart(product, 1);   // Call the ShoppingCart
+        ShoppingCartService.AddItemToCart(product, 1); // call a method named "AddItemToCart" from a service named "ShoppingCartService" to add the specified product to a shopping cart with a quantity of 1
     }
 }

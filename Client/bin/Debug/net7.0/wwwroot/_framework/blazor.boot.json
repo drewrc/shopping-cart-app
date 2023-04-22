@@ -199,15 +199,15 @@
       "mscorlib.dll": "sha256-3H8zsATEgIcRSRoZhWYtgfKT5VniJvhcYxLruf8koAY=",
       "netstandard.dll": "sha256-bbx+pnJNmXZyPqAgESJnWLJsbfuAl0UflLCdl9slPYE=",
       "System.Private.CoreLib.dll": "sha256-pUYF+nr8SzfBMCLc3FM2i\/YivXJlzztdLin+aUsoqP0=",
-      "ShoppingCartApp.Shared.dll": "sha256-i1Hs0Effb3yB3XcT1b\/ouqPg9ji5yKGjm3862KOJPvw=",
-      "ShoppingCartApp.Client.dll": "sha256-WgeSSMll1Segz7SJlRGCWMLq6LCQyq7SfMYeA8hVcuY="
+      "ShoppingCartApp.Shared.dll": "sha256-id3zkZ\/U3x6DY1USaqHoJERlLBS5CAMocxCkhrXH+aU=",
+      "ShoppingCartApp.Client.dll": "sha256-IzAynnfWbGMqjfBf4f\/BzVoP3uRrEvW960yq7vZBzOk="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "ShoppingCartApp.Shared.pdb": "sha256-jRy5dEAKv56Xf4UDPBjiLQ\/UTHQ2ZOYSr0uh81XCWw0=",
-      "ShoppingCartApp.Client.pdb": "sha256-5A8HAAQgIh0scfEKnz05kaELX8hALDeACikkxiTc51I="
+      "ShoppingCartApp.Shared.pdb": "sha256-xymCpBiIV9Uqy8kZyZPSvZJCLPQvYDilN\/x4yBZcIz4=",
+      "ShoppingCartApp.Client.pdb": "sha256-SCnckua\/+Om+5aJvivUxK2ib74TmxAFCCDK\/phRPZfg="
     },
     "runtime": {
       "dotnet.7.0.4.1h6p7y9rfk.js": "sha256-3l+4ZYRWpGMbBjNqeIqO9T\/65euaOzIvRlVX2SySvFQ=",
